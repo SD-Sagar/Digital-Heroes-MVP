@@ -1,0 +1,5 @@
+[functions.draw-engine]
+verify_jwt = true
+
+[functions.seed-data]
+verify_jwt = false
