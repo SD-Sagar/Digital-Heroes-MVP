@@ -32,7 +32,31 @@ export const simulateDraw = async (req, res) => {
     
     // Real user count for prize pool
     const activeSubscribersCount = Math.max(Object.keys(userScores).length, 15); // Fallback to 15 if empty DB
-    const prizePool = activeSubscribersCount * 1.5;
+    const basePrizePool = activeSubscribersCount * 1.5;
+    
+    // Calculate Rollover from previous draw
+    let rolledOverJackpot = 0;
+    const { data: previousDraw } = await supabase
+      .from('draws')
+      .select('*')
+      .eq('status', 'published')
+      .order('draw_date', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (previousDraw && previousDraw.prize_distribution) {
+      if (previousDraw.prize_distribution.fiveMatch?.winners === 0) {
+        rolledOverJackpot += previousDraw.prize_distribution.fiveMatch.amount || 0;
+      }
+      if (previousDraw.prize_distribution.fourMatch?.winners === 0) {
+        rolledOverJackpot += previousDraw.prize_distribution.fourMatch.amount || 0;
+      }
+      if (previousDraw.prize_distribution.threeMatch?.winners === 0) {
+        rolledOverJackpot += previousDraw.prize_distribution.threeMatch.amount || 0;
+      }
+    }
+
+    const prizePool = basePrizePool + rolledOverJackpot;
     
     const p5 = prizePool * 0.40;
     const p4 = prizePool * 0.35;
@@ -50,7 +74,8 @@ export const simulateDraw = async (req, res) => {
         status: 'simulated',
         winning_numbers: winningNumbers,
         prize_pool: prizePool,
-        prize_distribution: prizeDistribution
+        prize_distribution: prizeDistribution,
+        new_jackpot: rolledOverJackpot
       })
       .eq('id', id)
       .select()

@@ -159,7 +159,7 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-emerald-950 relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#f4f7f5] text-emerald-950 relative overflow-x-hidden">
       {/* Background gradients */}
       <div className="absolute inset-0 z-0">
         <div className="absolute -top-[10%] -right-[10%] w-[50%] h-[50%] bg-teal-600/20 rounded-full blur-[120px]" />
@@ -173,7 +173,7 @@ const AdminDashboard = () => {
             <motion.h1 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-4xl font-serif tracking-tight font-bold text-emerald-950 flex items-center gap-2"
+              className="text-4xl font-serif tracking-tight tracking-tight font-bold text-emerald-950 flex items-center gap-2"
             >
               <svg className="w-8 h-8 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -181,7 +181,7 @@ const AdminDashboard = () => {
               Admin Center
             </motion.h1>
             <div className="flex items-center gap-4">
-              <span className="text-sm font-medium text-slate-500 bg-slate-100 px-4 py-2 rounded-full border border-slate-200">
+              <span className="text-sm font-medium text-slate-500 bg-emerald-50/50 backdrop-blur-md px-4 py-2 rounded-full border border-slate-200">
                 Authorized: {user?.email}
               </span>
             </div>
@@ -190,7 +190,7 @@ const AdminDashboard = () => {
       </nav>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="bg-white shadow-md rounded-2xl flex-row items-center justify-start sm:justify-center border border-slate-200 p-2 mb-8 flex overflow-x-auto gap-2">
+        <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex-row items-center justify-start sm:justify-center border border-slate-200 p-2 mb-8 flex overflow-x-auto gap-2">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -198,7 +198,7 @@ const AdminDashboard = () => {
               className={`py-3 px-6 rounded-xl text-sm font-bold tracking-wide transition-all whitespace-nowrap flex-shrink-0 ${
                 activeTab === tab.id
                   ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/30'
-                  : 'text-slate-500 hover:text-emerald-900 hover:bg-slate-100'
+                  : 'text-slate-500 hover:text-emerald-900 hover:bg-emerald-50/50 backdrop-blur-md'
               }`}
             >
               {tab.name}
@@ -206,30 +206,30 @@ const AdminDashboard = () => {
           ))}
         </div>
 
-        <div className="bg-white shadow-2xl rounded-3xl border border-slate-200 rounded-3xl p-10 min-h-[600px] shadow-2xl">
+        <div className="bg-white/80 backdrop-blur-2xl shadow-2xl shadow-emerald-900/10 ring-1 ring-emerald-900/10 rounded-3xl border border-slate-200 rounded-3xl p-10 min-h-[600px] shadow-2xl">
           <AnimatePresence mode="wait">
             {activeTab === 'overview' && (
               <motion.div key="overview" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
-                <h2 className="text-4xl font-serif tracking-tight font-bold mb-8 text-emerald-950">System Diagnostics</h2>
+                <h2 className="text-4xl font-serif tracking-tight tracking-tight font-bold mb-8 text-emerald-950">System Diagnostics</h2>
                 {stats ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                    <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200 flex flex-col justify-between h-32">
+                    <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200 flex flex-col justify-between h-32">
                       <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Users</p>
                       <p className="text-5xl font-black text-emerald-950">{stats.totalUsers}</p>
                     </div>
-                    <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 flex flex-col justify-between h-32">
+                    <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 flex flex-col justify-between h-32">
                       <p className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Active Subs</p>
                       <p className="text-5xl font-black text-emerald-950">{stats.activeSubscriptions || 0}</p>
                     </div>
-                    <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-teal-500/30 bg-teal-500/5 flex flex-col justify-between h-32">
+                    <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-teal-500/30 bg-teal-500/5 flex flex-col justify-between h-32">
                       <p className="text-xs font-bold text-teal-400 uppercase tracking-wider">Prize Pool</p>
                       <p className="text-5xl font-black text-emerald-950">${stats.totalPrizePool?.toFixed(2)}</p>
                     </div>
-                    <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-amber-500/30 bg-amber-500/5 flex flex-col justify-between h-32">
+                    <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-amber-500/30 bg-amber-500/5 flex flex-col justify-between h-32">
                       <p className="text-xs font-bold text-amber-400 uppercase tracking-wider">Charity Impact</p>
                       <p className="text-5xl font-black text-emerald-950">${stats.totalCharityContributions?.toFixed(2)}</p>
                     </div>
-                    <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-amber-500/30 bg-amber-500/5 flex flex-col justify-between h-32">
+                    <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-amber-500/30 bg-amber-500/5 flex flex-col justify-between h-32">
                       <p className="text-xs font-bold text-amber-400 uppercase tracking-wider">Total Paid</p>
                       <p className="text-5xl font-black text-emerald-950">${stats.totalWinningsPaid?.toFixed(2)}</p>
                     </div>
@@ -244,10 +244,10 @@ const AdminDashboard = () => {
 
             {activeTab === 'users' && (
               <motion.div key="users" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
-                <h2 className="text-4xl font-serif tracking-tight font-bold mb-8 text-emerald-950">Directory</h2>
+                <h2 className="text-4xl font-serif tracking-tight tracking-tight font-bold mb-8 text-emerald-950">Directory</h2>
                 <div className="grid gap-4">
                   {users.map(u => (
-                    <div key={u._id} className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-5 rounded-2xl border border-slate-200 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+                    <div key={u._id} className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-5 rounded-2xl border border-slate-200 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
                       <div>
                         <p className="font-bold text-lg text-emerald-950">{u.firstName} {u.lastName}</p>
                         <p className="text-sm text-slate-500">{u.email}</p>
@@ -270,16 +270,16 @@ const AdminDashboard = () => {
             {activeTab === 'charities' && (
               <motion.div key="charities" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
                 <div className="flex justify-between items-center mb-8">
-                  <h2 className="text-4xl font-serif tracking-tight font-bold text-emerald-950">Charity Catalog</h2>
+                  <h2 className="text-4xl font-serif tracking-tight tracking-tight font-bold text-emerald-950">Charity Catalog</h2>
                 </div>
                 
-                <form onSubmit={handleSaveCharity} className="mb-10 p-10 bg-white shadow-md rounded-2xl flex flex-col items-center text-center rounded-2xl border border-slate-200">
+                <form onSubmit={handleSaveCharity} className="mb-10 p-10 bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center rounded-2xl border border-slate-200">
                   <h3 className="font-bold text-emerald-950 mb-4">{editingCharity ? 'Edit Partner Charity' : 'Onboard New Charity'}</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                    <input type="text" placeholder="Charity Name" required value={charityForm.name} onChange={e => setCharityForm({...charityForm, name: e.target.value})} className="bg-slate-50/80 border border-slate-200 p-3 rounded-xl text-emerald-950 outline-none focus:border-amber-500" />
-                    <input type="text" placeholder="Category (e.g. Health, Environment)" value={charityForm.category} onChange={e => setCharityForm({...charityForm, category: e.target.value})} className="bg-slate-50/80 border border-slate-200 p-3 rounded-xl text-emerald-950 outline-none focus:border-amber-500" />
+                    <input type="text" placeholder="Charity Name" required value={charityForm.name} onChange={e => setCharityForm({...charityForm, name: e.target.value})} className="bg-[#f4f7f5]/80 border border-slate-200 p-3 rounded-xl text-emerald-950 outline-none focus:border-amber-500" />
+                    <input type="text" placeholder="Category (e.g. Health, Environment)" value={charityForm.category} onChange={e => setCharityForm({...charityForm, category: e.target.value})} className="bg-[#f4f7f5]/80 border border-slate-200 p-3 rounded-xl text-emerald-950 outline-none focus:border-amber-500" />
                   </div>
-                  <textarea placeholder="Mission Description" required value={charityForm.description} onChange={e => setCharityForm({...charityForm, description: e.target.value})} className="w-full bg-slate-50/80 border border-slate-200 p-3 rounded-xl text-emerald-950 outline-none focus:border-amber-500 mb-4 h-24 resize-none" />
+                  <textarea placeholder="Mission Description" required value={charityForm.description} onChange={e => setCharityForm({...charityForm, description: e.target.value})} className="w-full bg-[#f4f7f5]/80 border border-slate-200 p-3 rounded-xl text-emerald-950 outline-none focus:border-amber-500 mb-4 h-24 resize-none" />
                   <div className="flex gap-3">
                     <button type="submit" className="bg-amber-600 text-white px-6 py-2 font-bold rounded-xl hover:bg-amber-500 transition-colors">
                       {editingCharity ? 'Update' : 'Publish'}
@@ -294,12 +294,12 @@ const AdminDashboard = () => {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {charities.map(c => (
-                    <div key={c._id} className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200 flex flex-col">
+                    <div key={c._id} className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200 flex flex-col">
                       <span className="text-xs font-bold bg-emerald-50 px-2 py-1 rounded w-fit mb-3 text-amber-300 uppercase tracking-wider">{c.category || 'General'}</span>
                       <h4 className="font-bold text-xl text-emerald-950 mb-2">{c.name}</h4>
                       <p className="text-sm text-slate-500 flex-grow mb-6">{c.description}</p>
                       <div className="flex gap-3 mt-auto w-full">
-                        <button onClick={() => { setEditingCharity(c); setCharityForm({name: c.name, description: c.description, category: c.category || ''}); }} className="flex-1 bg-slate-100 hover:bg-emerald-50 text-slate-700 py-2.5 rounded-lg text-sm font-bold transition-colors border border-slate-200">Edit</button>
+                        <button onClick={() => { setEditingCharity(c); setCharityForm({name: c.name, description: c.description, category: c.category || ''}); }} className="flex-1 bg-emerald-50/50 backdrop-blur-md hover:bg-emerald-50 text-slate-700 py-2.5 rounded-lg text-sm font-bold transition-colors border border-slate-200">Edit</button>
                         <button onClick={() => handleDeleteCharity(c._id)} className="flex-1 bg-rose-50 hover:bg-rose-100 text-rose-600 py-2.5 rounded-lg text-sm font-bold transition-colors border border-rose-200">Remove</button>
                       </div>
                     </div>
@@ -311,7 +311,7 @@ const AdminDashboard = () => {
             {activeTab === 'draws' && (
               <motion.div key="draws" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
                 <div className="flex justify-between items-center mb-8">
-                  <h2 className="text-4xl font-serif tracking-tight font-bold text-emerald-950">Draw Orchestration</h2>
+                  <h2 className="text-4xl font-serif tracking-tight tracking-tight font-bold text-emerald-950">Draw Orchestration</h2>
                   <div className="flex gap-3">
                     <button onClick={() => handleCreateDraw('random')} className="bg-emerald-50 text-emerald-950 px-4 py-2 font-bold rounded-xl hover:bg-emerald-100 transition-colors border border-slate-200">New Random</button>
                     <button onClick={() => handleCreateDraw('algorithmic')} className="bg-emerald-600 text-white px-4 py-2 font-bold rounded-xl hover:bg-emerald-500 transition-colors shadow-[0_0_15px_rgba(79,70,229,0.4)]">New Algorithmic</button>
@@ -319,7 +319,7 @@ const AdminDashboard = () => {
                 </div>
                 <div className="space-y-4">
                   {draws.map(d => (
-                    <div key={d._id} className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200 relative overflow-hidden">
+                    <div key={d._id} className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200 relative overflow-hidden">
                       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full mb-6 gap-4 border-b border-slate-100 pb-4">
                         <div className="text-left">
                           <p className="font-bold text-xl text-emerald-950">Draw: {new Date(d.drawDate).toLocaleDateString()}</p>
@@ -329,7 +329,7 @@ const AdminDashboard = () => {
                           <span className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${
                             d.status === 'published' ? 'bg-emerald-100 text-emerald-700 border border-emerald-200' :
                             d.status === 'simulated' ? 'bg-teal-100 text-teal-700 border border-teal-200' :
-                            'bg-slate-100 text-slate-600 border border-slate-200'
+                            'bg-emerald-50/50 backdrop-blur-md text-slate-600 border border-slate-200'
                           }`}>
                             {d.status}
                           </span>
@@ -342,7 +342,7 @@ const AdminDashboard = () => {
                         </div>
                       </div>
                       
-                      <div className="bg-slate-50/50 p-4 rounded-xl border border-slate-200 mb-4">
+                      <div className="bg-[#f4f7f5]/50 p-4 rounded-xl border border-slate-200 mb-4">
                         <p className="text-sm font-semibold text-slate-600 mb-2">Winning Combination</p>
                         <div className="flex gap-2">
                           {d.winningNumbers?.length > 0 ? (
@@ -363,15 +363,15 @@ const AdminDashboard = () => {
                         <div className="border-t border-slate-200 pt-4 mt-4">
                           <p className="text-sm font-bold text-slate-600 mb-3">Simulation Results</p>
                           <div className="grid grid-cols-3 gap-4 mb-4">
-                            <div className="bg-slate-100 p-3 rounded-lg text-center">
+                            <div className="bg-emerald-50/50 backdrop-blur-md p-3 rounded-lg text-center">
                               <p className="text-xs text-slate-500">5 Match</p>
                               <p className="font-bold text-emerald-950">{d.prizeDistribution?.fiveMatch?.winners || 0} winners</p>
                             </div>
-                            <div className="bg-slate-100 p-3 rounded-lg text-center">
+                            <div className="bg-emerald-50/50 backdrop-blur-md p-3 rounded-lg text-center">
                               <p className="text-xs text-slate-500">4 Match</p>
                               <p className="font-bold text-emerald-950">{d.prizeDistribution?.fourMatch?.winners || 0} winners</p>
                             </div>
-                            <div className="bg-slate-100 p-3 rounded-lg text-center">
+                            <div className="bg-emerald-50/50 backdrop-blur-md p-3 rounded-lg text-center">
                               <p className="text-xs text-slate-500">3 Match</p>
                               <p className="font-bold text-emerald-950">{d.prizeDistribution?.threeMatch?.winners || 0} winners</p>
                             </div>
@@ -390,19 +390,19 @@ const AdminDashboard = () => {
 
             {activeTab === 'winners' && (
               <motion.div key="winners" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
-                <h2 className="text-4xl font-serif tracking-tight font-bold mb-8 text-emerald-950">Fulfillment & Verification</h2>
+                <h2 className="text-4xl font-serif tracking-tight tracking-tight font-bold mb-8 text-emerald-950">Fulfillment & Verification</h2>
                 <div className="space-y-4">
                   {winners.map(w => (
-                    <div key={w._id} className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-emerald-500/20 relative">
+                    <div key={w._id} className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-emerald-500/20 relative">
                       <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-4">
                         <div>
                           <p className="font-bold text-lg text-emerald-950">{w.user?.email}</p>
                           <p className="text-sm text-emerald-400 font-semibold">{w.matchType} Number Match</p>
                         </div>
-                        <p className="text-5xl font-serif tracking-tight font-black text-emerald-400">${w.prizeAmount?.toFixed(2)}</p>
+                        <p className="text-5xl font-serif tracking-tight tracking-tight font-black text-emerald-400">${w.prizeAmount?.toFixed(2)}</p>
                       </div>
                       
-                      <div className="flex flex-wrap gap-4 text-sm text-slate-600 mb-4 bg-slate-100 p-4 rounded-xl border border-slate-200">
+                      <div className="flex flex-wrap gap-4 text-sm text-slate-600 mb-4 bg-emerald-50/50 backdrop-blur-md p-4 rounded-xl border border-slate-200">
                         <div className="flex-1">
                           <p className="text-xs text-slate-500 uppercase font-bold mb-1">Verify Status</p>
                           <p className={`font-semibold capitalize ${w.verificationStatus === 'pending' ? 'text-yellow-400' : 'text-emerald-400'}`}>{w.verificationStatus}</p>
@@ -442,12 +442,12 @@ const AdminDashboard = () => {
       {/* User Score Management Modal */}
       <AnimatePresence>
         {selectedUser && (
-          <div className="fixed inset-0 bg-slate-50/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="fixed inset-0 bg-[#f4f7f5]/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center border border-slate-200 rounded-3xl p-10 max-w-lg w-full max-h-[90vh] overflow-y-auto relative"
+              className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center border border-slate-200 rounded-3xl p-10 max-w-lg w-full max-h-[90vh] overflow-y-auto relative"
             >
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl font-bold text-emerald-950">Scores: {selectedUser.email}</h3>
@@ -457,16 +457,16 @@ const AdminDashboard = () => {
               </div>
               
               {editingScore ? (
-                <form onSubmit={handleUpdateUserScore} className="bg-slate-100 p-5 rounded-2xl mb-6 border border-emerald-500/30">
+                <form onSubmit={handleUpdateUserScore} className="bg-emerald-50/50 backdrop-blur-md p-5 rounded-2xl mb-6 border border-emerald-500/30">
                   <h4 className="font-bold text-emerald-300 mb-4">Edit Entry</h4>
                   <div className="space-y-4">
                     <div>
                       <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Score</label>
-                      <input type="number" required min="1" max="45" value={scoreForm.score} onChange={e => setScoreForm({...scoreForm, score: e.target.value})} className="w-full bg-slate-50 border border-slate-200 p-3 rounded-xl text-emerald-950 outline-none focus:border-emerald-500" />
+                      <input type="number" required min="1" max="45" value={scoreForm.score} onChange={e => setScoreForm({...scoreForm, score: e.target.value})} className="w-full bg-[#f4f7f5] border border-slate-200 p-3 rounded-xl text-emerald-950 outline-none focus:border-emerald-500" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Date</label>
-                      <input type="date" required value={scoreForm.date} onChange={e => setScoreForm({...scoreForm, date: e.target.value})} className="w-full bg-slate-50 border border-slate-200 p-3 rounded-xl text-emerald-950 outline-none focus:border-emerald-500" />
+                      <input type="date" required value={scoreForm.date} onChange={e => setScoreForm({...scoreForm, date: e.target.value})} className="w-full bg-[#f4f7f5] border border-slate-200 p-3 rounded-xl text-emerald-950 outline-none focus:border-emerald-500" />
                     </div>
                   </div>
                   <div className="flex gap-3 mt-5">
@@ -479,7 +479,7 @@ const AdminDashboard = () => {
               <div className="space-y-3">
                 <h4 className="font-bold text-slate-600 mb-3">Score History</h4>
                 {userScores.map(s => (
-                  <div key={s._id} className="flex justify-between items-center p-4 border border-slate-200 rounded-xl bg-slate-100">
+                  <div key={s._id} className="flex justify-between items-center p-4 border border-slate-200 rounded-xl bg-emerald-50/50 backdrop-blur-md">
                     <div>
                       <p className="font-bold text-xl text-emerald-300">{s.score} <span className="text-sm text-slate-500 font-normal">pts</span></p>
                       <p className="text-xs text-slate-500 mt-1">{new Date(s.date).toLocaleDateString()}</p>

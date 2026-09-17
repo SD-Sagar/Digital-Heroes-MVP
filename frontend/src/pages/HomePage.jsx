@@ -6,13 +6,13 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-slate-50 text-emerald-950 font-sans relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#f4f7f5] text-emerald-950 font-sans relative overflow-x-hidden">
       {/* Premium Decorative Accents */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-100 rounded-full blur-[100px] opacity-60 translate-x-1/2 -translate-y-1/4 pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-100/50 rounded-full blur-[100px] opacity-60 -translate-x-1/4 translate-y-1/4 pointer-events-none"></div>
 
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm border-b border-slate-200 px-6 py-4 flex justify-between items-center transition-all">
-        <div className="text-3xl font-serif tracking-tight font-black text-emerald-950">
+        <div className="text-3xl font-serif tracking-tight tracking-tight font-black text-emerald-950">
           DIGITAL<span className="text-amber-500">HEROES</span>.
         </div>
         <div className="space-x-4">
@@ -38,7 +38,7 @@ const HomePage = () => {
             Season 1 is Live • Play With Purpose
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-serif tracking-tight font-extrabold text-emerald-950 mb-6 leading-tight">
+          <h1 className="text-6xl md:text-8xl font-serif tracking-tight tracking-tight font-extrabold text-emerald-950 mb-6 leading-tight">
             Perform. <span className="text-emerald-700 italic">Prosper.</span> <br />
             Provide.
           </h1>
@@ -81,7 +81,7 @@ const HomePage = () => {
           ].map((feature, i) => (
             <div key={i} className="bg-white shadow-xl rounded-3xl p-10 border border-slate-100 hover:-translate-y-2 transition-transform duration-300">
               <div className="text-4xl mb-6">{feature.icon}</div>
-              <h3 className="text-2xl font-serif tracking-tight font-bold text-emerald-950 mb-3">{feature.title}</h3>
+              <h3 className="text-2xl font-serif tracking-tight tracking-tight font-bold text-emerald-950 mb-3">{feature.title}</h3>
               <p className="text-slate-500 font-medium leading-relaxed">{feature.desc}</p>
             </div>
           ))}

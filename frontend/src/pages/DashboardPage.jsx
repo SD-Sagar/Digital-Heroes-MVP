@@ -123,7 +123,7 @@ export default function DashboardPage() {
   const isActive = subscription?.status === 'active' && new Date(subscription.endDate) >= new Date();
 
   return (
-    <div className="min-h-screen bg-slate-50 text-emerald-950 relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#f4f7f5] text-emerald-950 relative overflow-x-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-emerald-600/30 rounded-full blur-[120px]" />
@@ -138,7 +138,7 @@ export default function DashboardPage() {
             <motion.h1 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-4xl font-serif tracking-tight font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 to-amber-200"
+              className="text-4xl font-serif tracking-tight tracking-tight font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 to-amber-200"
             >
               Digital Heroes
             </motion.h1>
@@ -162,7 +162,7 @@ export default function DashboardPage() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white shadow-2xl rounded-3xl border border-yellow-500/30 p-10 mb-8 rounded-2xl flex items-center justify-between"
+            className="bg-white/80 backdrop-blur-2xl shadow-2xl shadow-emerald-900/10 ring-1 ring-emerald-900/10 rounded-3xl border border-yellow-500/30 p-10 mb-8 rounded-2xl flex items-center justify-between"
           >
             <div>
               <h3 className="text-lg font-semibold text-yellow-400">No Active Subscription</h3>
@@ -183,9 +183,9 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white shadow-2xl rounded-3xl rounded-3xl overflow-hidden shadow-2xl border border-slate-200 mb-6"
+          className="bg-white/80 backdrop-blur-2xl shadow-2xl shadow-emerald-900/10 ring-1 ring-emerald-900/10 rounded-3xl rounded-3xl overflow-hidden shadow-2xl border border-slate-200 mb-6"
         >
-          <div className="border-b border-slate-200 bg-slate-100">
+          <div className="border-b border-slate-200 bg-emerald-50/50 backdrop-blur-md">
             <nav className="flex px-4 overflow-x-auto">
               {['overview', 'scores', 'charity', 'draws', 'winnings'].map((tab) => (
                 <button
@@ -194,7 +194,7 @@ export default function DashboardPage() {
                   className={`py-5 px-6 text-sm font-semibold capitalize tracking-wide transition-colors whitespace-nowrap ${
                     activeTab === tab
                       ? 'border-b-2 border-emerald-400 text-emerald-400'
-                      : 'text-slate-500 hover:text-slate-700 hover:bg-slate-100'
+                      : 'text-slate-500 hover:text-slate-700 hover:bg-emerald-50/50 backdrop-blur-md'
                   }`}
                 >
                   {tab}
@@ -216,7 +216,7 @@ export default function DashboardPage() {
                   <div>
                     <h2 className="text-xl font-bold mb-6 text-emerald-950">Subscription Status</h2>
                     {subscription ? (
-                      <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200">
+                      <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                           <div>
                             <p className="text-sm font-medium text-slate-500">Plan</p>
@@ -252,7 +252,7 @@ export default function DashboardPage() {
                         {scores.length > 0 ? (
                           <div className="space-y-3">
                             {scores.slice(0, 3).map((score) => (
-                              <div key={score._id} className="flex justify-between items-center bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-4 rounded-xl border border-slate-200">
+                              <div key={score._id} className="flex justify-between items-center bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-4 rounded-xl border border-slate-200">
                                 <span className="font-bold text-lg text-emerald-300">{score.score} <span className="text-sm font-normal text-slate-500">pts</span></span>
                                 <span className="text-sm font-medium text-slate-500">
                                   {new Date(score.date).toLocaleDateString()}
@@ -271,7 +271,7 @@ export default function DashboardPage() {
                           <button onClick={() => setActiveTab('charity')} className="text-sm text-emerald-400 hover:text-emerald-300 font-medium">Manage</button>
                         </div>
                         {mySelection ? (
-                          <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-amber-500/30 relative overflow-hidden group">
+                          <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-amber-500/30 relative overflow-hidden group">
                             <div className="absolute inset-0 bg-gradient-to-br from-amber-600/10 to-emerald-600/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                             <h3 className="text-xl font-bold text-emerald-950 relative z-10">{mySelection.charity.name}</h3>
                             <p className="text-slate-600 mt-2 relative z-10 line-clamp-2">{mySelection.charity.description}</p>
@@ -282,7 +282,7 @@ export default function DashboardPage() {
                             </div>
                           </div>
                         ) : (
-                          <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200 text-center">
+                          <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200 text-center">
                             <p className="text-slate-500 mb-4">You haven't selected a charity to support yet.</p>
                             <button
                               onClick={() => {
@@ -310,7 +310,7 @@ export default function DashboardPage() {
                 >
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
                     <div>
-                      <h2 className="text-5xl font-serif tracking-tight font-black text-emerald-950">Performance Metrics</h2>
+                      <h2 className="text-5xl font-serif tracking-tight tracking-tight font-black text-emerald-950">Performance Metrics</h2>
                       <p className="text-slate-500 mt-1">Track and analyze your golf scores over time.</p>
                     </div>
                     {isActive && (
@@ -329,7 +329,7 @@ export default function DashboardPage() {
                   </div>
 
                   {!isActive ? (
-                    <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center border border-yellow-500/30 p-10 rounded-3xl text-center">
+                    <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center border border-yellow-500/30 p-10 rounded-3xl text-center">
                       <div className="w-16 h-16 bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
                       </div>
@@ -337,31 +337,31 @@ export default function DashboardPage() {
                       <p className="text-slate-500">You need an active subscription to access the performance metrics engine.</p>
                     </div>
                   ) : scores.length === 0 ? (
-                    <div className="text-center py-20 bg-white shadow-md rounded-2xl flex flex-col items-center text-center rounded-3xl border border-slate-200 border-dashed">
+                    <div className="text-center py-20 bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center rounded-3xl border border-slate-200 border-dashed">
                       <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
                         <svg className="w-10 h-10 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                       </div>
-                      <h3 className="text-4xl font-serif tracking-tight font-bold text-emerald-950 mb-3">No Data Available</h3>
+                      <h3 className="text-4xl font-serif tracking-tight tracking-tight font-bold text-emerald-950 mb-3">No Data Available</h3>
                       <p className="text-slate-500 text-lg max-w-md mx-auto">Start logging your scores to build your performance profile and enter the draws.</p>
                     </div>
                   ) : (
                     <div className="space-y-6">
                       <div className="grid grid-cols-3 gap-6 mb-8">
-                        <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-3xl border border-slate-200 relative overflow-hidden">
+                        <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-3xl border border-slate-200 relative overflow-hidden">
                           <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/20 rounded-full blur-[30px]" />
                           <p className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Average Score</p>
                           <p className="text-5xl font-black text-emerald-950">
                             {(scores.reduce((acc, s) => acc + s.score, 0) / scores.length).toFixed(1)}
                           </p>
                         </div>
-                        <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-3xl border border-slate-200 relative overflow-hidden">
+                        <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-3xl border border-slate-200 relative overflow-hidden">
                           <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/20 rounded-full blur-[30px]" />
                           <p className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Highest Score</p>
                           <p className="text-5xl font-black text-emerald-400">
                             {Math.max(...scores.map(s => s.score))}
                           </p>
                         </div>
-                        <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-3xl border border-slate-200 relative overflow-hidden">
+                        <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-3xl border border-slate-200 relative overflow-hidden">
                           <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/20 rounded-full blur-[30px]" />
                           <p className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Total Entries</p>
                           <p className="text-5xl font-black text-amber-400">
@@ -370,8 +370,8 @@ export default function DashboardPage() {
                         </div>
                       </div>
 
-                      <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center rounded-3xl border border-slate-200 overflow-hidden">
-                        <div className="grid grid-cols-12 gap-4 p-5 bg-slate-100 border-b border-slate-200 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                      <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center rounded-3xl border border-slate-200 overflow-hidden">
+                        <div className="grid grid-cols-12 gap-4 p-5 bg-emerald-50/50 backdrop-blur-md border-b border-slate-200 text-xs font-bold text-slate-500 uppercase tracking-wider">
                           <div className="col-span-4">Date Played</div>
                           <div className="col-span-3">Stableford Points</div>
                           <div className="col-span-2">Trend</div>
@@ -407,7 +407,7 @@ export default function DashboardPage() {
                                       {score.score - prevScore}
                                     </span>
                                   ) : (
-                                    <span className="text-slate-500 font-medium text-sm bg-slate-500/10 px-2 py-1 rounded">
+                                    <span className="text-slate-500 font-medium text-sm bg-[#f4f7f5]0/10 px-2 py-1 rounded">
                                       Even
                                     </span>
                                   )}
@@ -446,21 +446,21 @@ export default function DashboardPage() {
                   exit={{ opacity: 0, x: -20 }}
                 >
                   <div className="flex justify-between items-center mb-8">
-                    <h2 className="text-4xl font-serif tracking-tight font-bold text-emerald-950">My Impact</h2>
+                    <h2 className="text-4xl font-serif tracking-tight tracking-tight font-bold text-emerald-950">My Impact</h2>
                   </div>
                   
                   {mySelection ? (
-                    <div className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-3xl border border-amber-500/30 mb-10 relative overflow-hidden">
+                    <div className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-3xl border border-amber-500/30 mb-10 relative overflow-hidden">
                       <div className="absolute top-0 right-0 w-64 h-64 bg-amber-600/20 rounded-full blur-[80px]" />
                       <div className="relative z-10">
                         <span className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-2 block">Currently Supporting</span>
-                        <h3 className="text-5xl font-serif tracking-tight font-bold text-emerald-950 mb-4">{mySelection.charity.name}</h3>
+                        <h3 className="text-5xl font-serif tracking-tight tracking-tight font-bold text-emerald-950 mb-4">{mySelection.charity.name}</h3>
                         <p className="text-slate-600 text-lg max-w-3xl mb-8 leading-relaxed">{mySelection.charity.description}</p>
                         
                         <div className="flex flex-wrap items-center gap-6">
-                          <div className="bg-slate-100 px-6 py-4 rounded-2xl border border-slate-200">
+                          <div className="bg-emerald-50/50 backdrop-blur-md px-6 py-4 rounded-2xl border border-slate-200">
                             <p className="text-sm text-slate-500 font-medium">Your Contribution</p>
-                            <p className="text-4xl font-serif tracking-tight font-bold text-emerald-950 mt-1">{mySelection.contributionPercentage}% <span className="text-sm font-normal text-slate-500">of subscription</span></p>
+                            <p className="text-4xl font-serif tracking-tight tracking-tight font-bold text-emerald-950 mt-1">{mySelection.contributionPercentage}% <span className="text-sm font-normal text-slate-500">of subscription</span></p>
                           </div>
                           
                           <button
@@ -479,13 +479,13 @@ export default function DashboardPage() {
                       </div>
                     </div>
                   ) : (
-                    <div className="text-center py-16 bg-white shadow-md rounded-2xl flex flex-col items-center text-center rounded-3xl border border-slate-200 mb-10">
+                    <div className="text-center py-16 bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center rounded-3xl border border-slate-200 mb-10">
                       <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                         <svg className="w-10 h-10 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
                       </div>
-                      <h3 className="text-4xl font-serif tracking-tight font-bold text-emerald-950 mb-3">Make an Impact</h3>
+                      <h3 className="text-4xl font-serif tracking-tight tracking-tight font-bold text-emerald-950 mb-3">Make an Impact</h3>
                       <p className="text-slate-500 max-w-lg mx-auto mb-8">Select a charity to dedicate a portion of your subscription fee. You play, they benefit.</p>
                       <button
                         onClick={() => {
@@ -502,7 +502,7 @@ export default function DashboardPage() {
                   <h3 className="text-xl font-bold text-emerald-950 mb-6">Available Causes</h3>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {charities.map(charity => (
-                      <div key={charity._id} className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200 hover:border-slate-300 transition-colors flex flex-col">
+                      <div key={charity._id} className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200 hover:border-slate-300 transition-colors flex flex-col">
                         <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">{charity.category || 'General'}</span>
                         <h4 className="text-lg font-bold text-emerald-950 mb-3">{charity.name}</h4>
                         <p className="text-sm text-slate-500 flex-grow mb-6">{charity.description}</p>
@@ -511,7 +511,7 @@ export default function DashboardPage() {
                             setCharityForm({ charityId: charity._id, contributionPercentage: 10 });
                             setShowCharityModal(true);
                           }}
-                          className="w-full py-2 bg-slate-100 hover:bg-emerald-50 text-emerald-950 font-medium rounded-lg transition-colors border border-slate-200"
+                          className="w-full py-2 bg-emerald-50/50 backdrop-blur-md hover:bg-emerald-50 text-emerald-950 font-medium rounded-lg transition-colors border border-slate-200"
                         >
                           Support this cause
                         </button>
@@ -528,17 +528,17 @@ export default function DashboardPage() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                 >
-                  <h2 className="text-4xl font-serif tracking-tight font-bold mb-8 text-emerald-950">My Draw Participations</h2>
+                  <h2 className="text-4xl font-serif tracking-tight tracking-tight font-bold mb-8 text-emerald-950">My Draw Participations</h2>
                   {!isActive ? (
                     <p className="text-slate-500 italic">Active subscription required to participate in draws</p>
                   ) : participations.length === 0 ? (
-                    <div className="text-center py-12 bg-white shadow-md rounded-2xl flex flex-col items-center text-center rounded-2xl border border-slate-200">
+                    <div className="text-center py-12 bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center rounded-2xl border border-slate-200">
                       <p className="text-slate-500 text-lg">No participations yet. Keep adding scores!</p>
                     </div>
                   ) : (
                     <div className="space-y-4">
                       {participations.map((participation) => (
-                        <div key={participation._id} className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200 relative overflow-hidden">
+                        <div key={participation._id} className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-slate-200 relative overflow-hidden">
                           {participation.prizeAmount > 0 && (
                             <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/20 rounded-full blur-[40px]" />
                           )}
@@ -548,13 +548,13 @@ export default function DashboardPage() {
                             </div>
                             <span className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${
                               participation.draw.status === 'published' ? 'bg-emerald-100 text-emerald-700 border border-emerald-200' :
-                              'bg-slate-100 text-slate-600 border border-slate-200'
+                              'bg-emerald-50/50 backdrop-blur-md text-slate-600 border border-slate-200'
                             }`}>
                               {participation.draw.status}
                             </span>
                           </div>
                           <div className="grid md:grid-cols-2 gap-6 relative z-10">
-                            <div className="bg-slate-100 p-4 rounded-xl">
+                            <div className="bg-emerald-50/50 backdrop-blur-md p-4 rounded-xl">
                               <span className="text-sm text-slate-500 block mb-2 font-medium">Your Numbers</span>
                               <div className="flex flex-wrap gap-2">
                                 {participation.userNumbers.map((num, idx) => (
@@ -566,7 +566,7 @@ export default function DashboardPage() {
                             </div>
                             
                             {participation.draw.status === 'published' && (
-                              <div className="bg-slate-100 p-4 rounded-xl">
+                              <div className="bg-emerald-50/50 backdrop-blur-md p-4 rounded-xl">
                                 <span className="text-sm text-slate-500 block mb-2 font-medium">Winning Numbers</span>
                                 <div className="flex flex-wrap gap-2">
                                   {participation.draw.winningNumbers.map((num, idx) => (
@@ -606,15 +606,15 @@ export default function DashboardPage() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                 >
-                  <h2 className="text-4xl font-serif tracking-tight font-bold mb-8 text-emerald-950">My Winnings</h2>
+                  <h2 className="text-4xl font-serif tracking-tight tracking-tight font-bold mb-8 text-emerald-950">My Winnings</h2>
                   {winnings.length === 0 ? (
-                    <div className="text-center py-12 bg-white shadow-md rounded-2xl flex flex-col items-center text-center rounded-2xl border border-slate-200">
+                    <div className="text-center py-12 bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center rounded-2xl border border-slate-200">
                       <p className="text-slate-500 text-lg">No winnings yet. Keep playing!</p>
                     </div>
                   ) : (
                     <div className="space-y-4">
                       {winnings.map((winning) => (
-                        <div key={winning._id} className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center p-10 rounded-2xl border border-emerald-500/30 relative overflow-hidden">
+                        <div key={winning._id} className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center p-10 rounded-2xl border border-emerald-500/30 relative overflow-hidden">
                           <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/20 rounded-full blur-[40px]" />
                           <div className="relative z-10 flex flex-col md:flex-row justify-between md:items-center gap-4">
                             <div>
@@ -626,20 +626,20 @@ export default function DashboardPage() {
                                   {new Date(winning.draw.drawDate).toLocaleDateString()}
                                 </span>
                               </div>
-                              <div className="text-5xl font-serif tracking-tight font-bold text-emerald-400">
+                              <div className="text-5xl font-serif tracking-tight tracking-tight font-bold text-emerald-400">
                                 ${winning.prizeAmount.toFixed(2)}
                               </div>
                             </div>
                             
                             <div className="flex flex-col gap-2 min-w-[200px]">
-                              <div className="bg-slate-100 p-3 rounded-lg border border-slate-200">
+                              <div className="bg-emerald-50/50 backdrop-blur-md p-3 rounded-lg border border-slate-200">
                                 <p className="text-xs text-slate-500 uppercase font-bold mb-1">Verification</p>
                                 <p className={`text-sm font-semibold capitalize ${
                                   winning.verificationStatus === 'verified' ? 'text-emerald-400' : 'text-yellow-400'
                                 }`}>{winning.verificationStatus}</p>
                               </div>
                               {winning.verificationStatus === 'verified' && (
-                                <div className="bg-slate-100 p-3 rounded-lg border border-slate-200">
+                                <div className="bg-emerald-50/50 backdrop-blur-md p-3 rounded-lg border border-slate-200">
                                   <p className="text-xs text-slate-500 uppercase font-bold mb-1">Payout Status</p>
                                   <p className={`text-sm font-semibold capitalize ${
                                     winning.payoutStatus === 'paid' ? 'text-emerald-400' : 'text-slate-600'
@@ -670,15 +670,15 @@ export default function DashboardPage() {
       {/* Score Modal */}
       <AnimatePresence>
         {showScoreModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-50/80 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#f4f7f5]/80 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center border border-slate-200 rounded-3xl p-10 max-w-md w-full relative overflow-hidden"
+              className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center border border-slate-200 rounded-3xl p-10 max-w-md w-full relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/20 rounded-full blur-[40px]" />
-              <h3 className="text-4xl font-serif tracking-tight font-bold text-emerald-950 mb-6 relative z-10">
+              <h3 className="text-4xl font-serif tracking-tight tracking-tight font-bold text-emerald-950 mb-6 relative z-10">
                 {editingScore ? 'Edit Score' : 'Add New Score'}
               </h3>
               <form onSubmit={handleAddScore} className="space-y-5 relative z-10">
@@ -693,7 +693,7 @@ export default function DashboardPage() {
                     max="45"
                     value={scoreForm.score}
                     onChange={(e) => setScoreForm({ ...scoreForm, score: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl text-emerald-950 outline-none focus:border-emerald-500 transition-colors"
+                    className="w-full px-4 py-3 bg-emerald-50/50 backdrop-blur-md border border-slate-200 rounded-xl text-emerald-950 outline-none focus:border-emerald-500 transition-colors"
                   />
                 </div>
                 <div>
@@ -705,7 +705,7 @@ export default function DashboardPage() {
                     required
                     value={scoreForm.date}
                     onChange={(e) => setScoreForm({ ...scoreForm, date: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl text-emerald-950 outline-none focus:border-emerald-500 transition-colors"
+                    className="w-full px-4 py-3 bg-emerald-50/50 backdrop-blur-md border border-slate-200 rounded-xl text-emerald-950 outline-none focus:border-emerald-500 transition-colors"
                   />
                 </div>
                 <div className="flex gap-3 pt-2">
@@ -742,15 +742,15 @@ export default function DashboardPage() {
       {/* Charity Modal */}
       <AnimatePresence>
         {showCharityModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-50/80 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#f4f7f5]/80 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white shadow-md rounded-2xl flex flex-col items-center text-center border border-slate-200 rounded-3xl p-10 max-w-md w-full relative overflow-hidden"
+              className="bg-white/70 backdrop-blur-2xl shadow-xl shadow-emerald-900/5 ring-1 ring-emerald-900/10 rounded-3xl flex flex-col items-center text-center border border-slate-200 rounded-3xl p-10 max-w-md w-full relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/20 rounded-full blur-[40px]" />
-              <h3 className="text-4xl font-serif tracking-tight font-bold text-emerald-950 mb-6 relative z-10">Dedicate Impact</h3>
+              <h3 className="text-4xl font-serif tracking-tight tracking-tight font-bold text-emerald-950 mb-6 relative z-10">Dedicate Impact</h3>
               <form onSubmit={handleSelectCharity} className="space-y-5 relative z-10">
                 <div>
                   <label className="block text-sm font-bold text-slate-500 uppercase tracking-wide mb-2">
@@ -760,7 +760,7 @@ export default function DashboardPage() {
                     required
                     value={charityForm.charityId}
                     onChange={(e) => setCharityForm({ ...charityForm, charityId: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50/80 border border-slate-200 rounded-xl text-emerald-950 outline-none focus:border-amber-500 transition-colors"
+                    className="w-full px-4 py-3 bg-[#f4f7f5]/80 border border-slate-200 rounded-xl text-emerald-950 outline-none focus:border-amber-500 transition-colors"
                   >
                     <option value="" disabled>Select a charity</option>
                     {charities.map((charity) => (
@@ -781,7 +781,7 @@ export default function DashboardPage() {
                     max="100"
                     value={charityForm.contributionPercentage}
                     onChange={(e) => setCharityForm({ ...charityForm, contributionPercentage: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl text-emerald-950 outline-none focus:border-amber-500 transition-colors"
+                    className="w-full px-4 py-3 bg-emerald-50/50 backdrop-blur-md border border-slate-200 rounded-xl text-emerald-950 outline-none focus:border-amber-500 transition-colors"
                   />
                   {subscription && (
                     <p className="text-sm text-amber-400 mt-2 font-medium">

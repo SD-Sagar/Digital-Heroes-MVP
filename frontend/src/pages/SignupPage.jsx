@@ -40,7 +40,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 relative overflow-hidden py-10">
+    <div className="min-h-screen bg-[#f4f7f5] flex items-center justify-center px-4 relative overflow-hidden py-10">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         
@@ -54,13 +54,13 @@ export default function SignupPage() {
         className="max-w-md w-full relative z-10"
       >
         <div className="text-center mb-8">
-          <Link to="/" className="text-4xl font-serif tracking-tight font-black tracking-tighter text-emerald-950 inline-block mb-2 hover:scale-105 transition-transform">
+          <Link to="/" className="text-4xl font-serif tracking-tight tracking-tight font-black tracking-tighter text-emerald-950 inline-block mb-2 hover:scale-105 transition-transform">
             DIGITAL<span className="text-emerald-400">HEROES</span>.
           </Link>
           <p className="text-slate-500">Join the movement. Play with purpose.</p>
         </div>
 
-        <div className="bg-white shadow-2xl rounded-3xl rounded-3xl p-8 border border-slate-200">
+        <div className="bg-white/80 backdrop-blur-2xl shadow-2xl shadow-emerald-900/10 ring-1 ring-emerald-900/10 rounded-3xl rounded-3xl p-8 border border-slate-200">
           {error && (
             <div className="mb-6 p-4 bg-red-500/10 border border-red-500/50 text-red-400 rounded-xl text-sm text-center">
               {error}
@@ -76,7 +76,7 @@ export default function SignupPage() {
                   required
                   value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-emerald-950 outline-none transition-all placeholder-slate-500"
+                  className="w-full px-4 py-3 bg-emerald-50/50 backdrop-blur-md border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-emerald-950 outline-none transition-all placeholder-slate-500"
                   placeholder="John"
                 />
               </div>
@@ -87,7 +87,7 @@ export default function SignupPage() {
                   required
                   value={formData.lastName}
                   onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-emerald-950 outline-none transition-all placeholder-slate-500"
+                  className="w-full px-4 py-3 bg-emerald-50/50 backdrop-blur-md border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-emerald-950 outline-none transition-all placeholder-slate-500"
                   placeholder="Doe"
                 />
               </div>
@@ -100,7 +100,7 @@ export default function SignupPage() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-emerald-950 outline-none transition-all placeholder-slate-500"
+                className="w-full px-4 py-3 bg-emerald-50/50 backdrop-blur-md border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-emerald-950 outline-none transition-all placeholder-slate-500"
                 placeholder="you@example.com"
               />
             </div>
@@ -113,7 +113,7 @@ export default function SignupPage() {
                 minLength="6"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-emerald-950 outline-none transition-all placeholder-slate-500"
+                className="w-full px-4 py-3 bg-emerald-50/50 backdrop-blur-md border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-emerald-950 outline-none transition-all placeholder-slate-500"
                 placeholder="At least 6 characters"
               />
             </div>

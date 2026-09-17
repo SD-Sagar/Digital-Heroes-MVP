@@ -52,7 +52,7 @@ const CharityDirectory = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl font-serif tracking-tight font-extrabold text-gray-900 mb-4">Our Charity Partners</h1>
+          <h1 className="text-5xl font-serif tracking-tight tracking-tight font-extrabold text-gray-900 mb-4">Our Charity Partners</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Explore the incredible organizations you can support with your Digital Heroes subscription. 
             Search by name or filter by category.
@@ -97,7 +97,7 @@ const CharityDirectory = () => {
                 <img src={charity.images[0]} alt={charity.name} className="w-full h-48 object-cover" />
               ) : (
                 <div className="w-full h-48 bg-gradient-to-r from-emerald-500 to-purple-600 flex items-center justify-center">
-                  <span className="text-emerald-950 text-4xl font-serif tracking-tight font-bold opacity-50">{charity.name.substring(0, 1)}</span>
+                  <span className="text-emerald-950 text-4xl font-serif tracking-tight tracking-tight font-bold opacity-50">{charity.name.substring(0, 1)}</span>
                 </div>
               )}
               

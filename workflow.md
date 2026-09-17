@@ -21,6 +21,11 @@ When the Admin clicks **Run Simulation**, the system compares every user's *5 mo
 
 These boxes in the Admin UI allow you to see *exactly* how many people won each tier, and how much money they will get, **before** you actually publish the draw.
 
+## 4. Rollovers (When No One Wins)
+Because the draw numbers are generated independently, it is statistically possible that a week passes where **no one matches 5 numbers**.
+- **What happens to the money?** If a tier (e.g., the 5-Match Jackpot) has zero winners, the money allocated to that tier does not vanish. It is preserved and officially **rolls over** into the `new_jackpot` for the *next* draw.
+- This creates massive excitement. Just like a real lottery, if no one wins the jackpot this week, next week's prize pool will be significantly larger, driving more users to practice and log their scores!
+
 ## 4. End-to-End Complete Scenario
 
 ### Step 1: User Onboarding
@@ -44,3 +49,58 @@ These boxes in the Admin UI allow you to see *exactly* how many people won each 
 4. The Admin reviews the ID and clicks **Approve Identity**.
 5. The Admin wires the $5.25 via bank transfer, then clicks **Mark Dispensed**.
 6. The platform's **Total Paid** metric increases by $5.25.
+
+
+
+
+# Digital Heroes: Core Workflow & Mechanics
+
+This document outlines the exact flow of data, money, and mechanics within the Digital Heroes platform. Use this as your "source of truth" when presenting the platform's logic to stakeholders.
+
+## 1. The Core Loop (User Journey)
+1. **Subscribe**: A user pays a monthly subscription (e.g., $15/month). 
+2. **Earmark Charity**: During signup, the user selects a partnered charity. A strict 10% of their subscription is routed to this charity's cumulative impact fund.
+3. **Log Scores**: After playing a real-life round of golf, the user logs their Stableford score (ranging from 1 to 45).
+4. **The "Ticket"**: The database strictly maintains a rolling window of the user's **Latest 5 Scores**. This array of 5 numbers acts as their "Lottery Ticket" for all active draws.
+
+## 2. The Draw Engines (Admin Orchestration)
+The platform features two distinct calculation engines to generate the weekly winning numbers.
+
+- **Random Engine**: Generates 5 purely random numbers between 1 and 45. This mimics a traditional, highly volatile lottery system.
+- **Algorithmic Engine (Premium)**: Rather than pure luck, this engine analyzes real-world Professional Golf (PGA) performance curves to generate a sequence of numbers that represents an "optimal" professional round. It is mathematically designed to reward users whose scores align with professional performance distributions, blending luck with skill-based gamification.
+
+## 3. The Lifecycle of a Draw
+Every draw goes through a strict 3-stage pipeline to ensure administrative oversight and financial security.
+
+### Stage 1: Draft
+The Admin creates a new draw and selects the engine (Random or Algorithmic). No numbers are generated yet.
+
+### Stage 2: Simulation
+The Admin clicks "Run Simulation".
+1. The engine fires and generates the 5 Winning Numbers.
+2. The system scans the entire database of active users and compares the winning numbers against every user's current "Latest 5 Scores".
+3. The system calculates exactly how many users matched 5, 4, or 3 numbers.
+4. **The Prize Pool**: The pool is sized dynamically based on the total number of active subscribers.
+5. The system forecasts the payouts but **does not** credit any user accounts. This allows the Admin to audit the financial liability before going live.
+
+### Stage 3: Published (Fulfillment)
+The Admin clicks "Publish to Users".
+1. The system locks the draw.
+2. It performs one final, precise recalculation of all matches to ensure 100% accuracy (in case users updated their scores during the simulation window).
+3. The system slices the Prize Pool and inserts permanent rows into the `winners` database table for every user who achieved 3, 4, or 5 matches.
+4. Users instantly see their winnings appear on their dashboard under "My Participations".
+
+## 4. Prize Pool Slicing & Economics
+The total prize pool is distributed as follows:
+- **40%** reserved for 5-Match Winners (The Jackpot)
+- **35%** reserved for 4-Match Winners
+- **25%** reserved for 3-Match Winners
+
+*Note: If there are multiple winners in a tier, that tier's cash allocation is split evenly among them.*
+
+## 5. Fulfillment & Verification
+Winning users are credited with a "Pending" payout status. The Admin receives a notification in the "Fulfillment" dashboard. 
+- The Admin reviews the user's identity proof (anti-fraud measure).
+- The Admin clicks "Approve", officially verifying the user.
+- The Admin processes the bank transfer/payment out-of-band and clicks "Mark Dispensed" to close the lifecycle.
+

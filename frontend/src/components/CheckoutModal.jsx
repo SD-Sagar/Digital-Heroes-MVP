@@ -52,7 +52,7 @@ const CheckoutModal = ({ isOpen, onClose, onComplete }) => {
             </div>
           ) : (
             <>
-              <div className="bg-slate-50 p-8 border-b border-slate-100">
+              <div className="bg-[#f4f7f5] p-8 border-b border-slate-100">
                 <div className="flex items-center gap-2 mb-1">
                   <div className="w-6 h-6 rounded bg-indigo-600 flex items-center justify-center">
                     <span className="text-white text-xs font-bold">DH</span>
